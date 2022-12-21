@@ -4,9 +4,9 @@ spring:
   # Database
   datasource:
     driver-class-name:  org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/security
-    username: cos
-    password: cos1234
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password: ''
   # JPA
   jpa:
     properties:
@@ -16,8 +16,8 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.MariaDBDialect
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
     open-in-view: false
     generate-ddl: true
 

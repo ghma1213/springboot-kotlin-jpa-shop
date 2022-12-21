@@ -1,4 +1,3 @@
 package com.shop.springbootkotlinjpashop
 
-class UserDto {
-}
+data class UserDto (var name: String, var age: Int )
