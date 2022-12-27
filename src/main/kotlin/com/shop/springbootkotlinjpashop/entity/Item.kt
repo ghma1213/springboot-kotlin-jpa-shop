@@ -5,7 +5,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-class Item(
+data class Item(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "item_id", nullable = false)

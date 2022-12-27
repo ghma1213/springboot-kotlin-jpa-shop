@@ -31,4 +31,59 @@ class ItemRepositoryTest @Autowired constructor(val itemRepository: ItemReposito
         println("savedItem = $savedItem")
 
     }
+
+    fun createItemList() {
+        for (i in 1..10) {
+            val item = Item(
+                itemNm = "테스트 상품$i",
+                price = 1000+i,
+                itemDetail = "테스트 상품 상세 설명$i",
+                itemSellStatus = ItemSellStatus.SELL,
+                stockNumber = 100,
+                regTime = LocalDateTime.now(),
+                updateTime = LocalDateTime.now()
+            )
+            val savedItem: Item = itemRepository.save(item)
+        }
+    }
+
+    @Test
+    @DisplayName("상품명 조회 테스트")
+    fun findByItemNmTest() {
+        this.createItemList()
+        val itemList = itemRepository.findByItemNm("테스트 상품1")
+        for (item in itemList) {
+            println("itemList = $itemList")
+        }
+    }
+
+    @Test
+    @DisplayName("상품명, 상품상세설명 or 테스트")
+    fun findByItemNmOrItemDetailTest() {
+        this.createItemList()
+        val itemList = itemRepository.findByItemNmOrItemDetail("테스트 상품1", "테스트 상품 상세 설명5")
+        for (item in itemList) {
+            println("itemList = $itemList")
+        }
+    }
+
+    @Test
+    @DisplayName("가격 LessThan 테스트")
+    fun findByPriceLessThanTest() {
+        this.createItemList()
+        val itemList = itemRepository.findByPriceLessThan(10005)
+        for (item in itemList) {
+            println("itemList = $itemList")
+        }
+    }
+
+    @Test
+    @DisplayName("가격 내림차순 조회 테스트")
+    fun findByPriceLessThanOrderByPriceDescTest() {
+        this.createItemList()
+        val itemList = itemRepository.findByPriceLessThanOrderByPriceDesc(10005)
+        for (item in itemList) {
+            println("itemList = $itemList")
+        }
+    }
 }
