@@ -6,6 +6,8 @@ plugins {
     kotlin("jvm") version "1.7.21"
     kotlin("plugin.spring") version "1.7.21"
     kotlin("plugin.jpa") version "1.7.21"
+    kotlin("kapt") version "1.7.21"
+    idea
 }
 
 group = "com.shop"
@@ -16,6 +18,12 @@ configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
+}
+
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
 }
 
 repositories {
@@ -30,6 +38,10 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.0.0")
+    implementation("com.vladmihalcea:hibernate-types-60:2.20.0")
+    implementation("com.infobip:infobip-spring-data-jpa-querydsl-boot-starter:8.0.0")
+    kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
     testRuntimeOnly("com.h2database:h2")
@@ -47,4 +59,12 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+idea {
+    module {
+        val kaptMain = file("build/generated/source/kapt/main")
+        sourceDirs.add(kaptMain)
+        generatedSourceDirs.add(kaptMain)
+    }
 }
