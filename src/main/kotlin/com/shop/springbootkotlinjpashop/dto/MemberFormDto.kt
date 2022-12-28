@@ -5,4 +5,6 @@ data class MemberFormDto (
     val email: String,
     val password: String,
     val address: String
-)
+) {
+
+}
