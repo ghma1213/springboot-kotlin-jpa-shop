@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne
 import java.time.LocalDateTime
 
 @Entity
-class OrderItem (
+class OrderItem(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -20,7 +20,7 @@ class OrderItem (
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    val order: Order,
+    val order: Order?,
 
     val orderPrice: Int,
 

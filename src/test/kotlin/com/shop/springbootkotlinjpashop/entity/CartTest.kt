@@ -18,10 +18,18 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 @TestPropertySource(locations = ["classpath:application-test.yml"])
 class CartTest {
-    @Autowired lateinit var cartRepository: CartRepository
-    @Autowired lateinit var memberRepository: MemberRepository
-    @Autowired lateinit var passwordEncoder: PasswordEncoder
-    @PersistenceContext lateinit var em: EntityManager
+    @Autowired
+    lateinit var cartRepository: CartRepository
+
+    @Autowired
+    lateinit var memberRepository: MemberRepository
+
+    @Autowired
+    lateinit var passwordEncoder: PasswordEncoder
+
+    @PersistenceContext
+    lateinit var em: EntityManager
+
     fun createMember(): Member {
         val memberFormDto = MemberFormDto(
             "마경환",

@@ -20,7 +20,7 @@ class Order (
     @Enumerated(EnumType.STRING)
     val orderStatus: OrderStatus,
 
-    @OneToMany
+    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL], orphanRemoval = true)
     val orderItems: List<OrderItem> = listOf(),
 
     val regTime: LocalDateTime,
