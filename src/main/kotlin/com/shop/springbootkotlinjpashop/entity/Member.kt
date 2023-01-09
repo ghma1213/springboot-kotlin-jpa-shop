@@ -6,23 +6,23 @@ import jakarta.persistence.*
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Entity
-data class Member (
+class Member (
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id", nullable = false)
-    var id: Long? = null,
+    val id: Long? = null,
 
-    var name: String,
+    val name: String,
 
     @Column(unique = true)
-    var email: String,
+    val email: String,
 
-    var password: String,
+    val password: String,
 
-    var address: String,
+    val address: String,
 
     @Enumerated(EnumType.STRING)
-    var role: Role,
+    val role: Role,
 
 ) {
 

@@ -5,30 +5,30 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-data class Item(
+class Item(
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id", nullable = false)
-    var id: Long? = null,
+    val id: Long? = null,
 
     @Column(nullable = false, length = 50)
-    var itemNm: String,
+    val itemNm: String,
 
     @Column(name="price", nullable = false)
-    var price: Int,
+    val price: Int,
 
     @Column(nullable = false)
-    var stockNumber: Int,
+    val stockNumber: Int,
 
     @Lob
     @Column(nullable = false)
-    var itemDetail: String,
+    val itemDetail: String,
 
     @Enumerated(EnumType.STRING)
-    var itemSellStatus: ItemSellStatus,
+    val itemSellStatus: ItemSellStatus,
 
-    var regTime: LocalDateTime,
+    val regTime: LocalDateTime,
 
-    var updateTime: LocalDateTime
+    val updateTime: LocalDateTime
 
 )

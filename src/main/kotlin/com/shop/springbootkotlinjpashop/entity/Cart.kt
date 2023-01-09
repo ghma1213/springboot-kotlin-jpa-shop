@@ -3,11 +3,13 @@ package com.shop.springbootkotlinjpashop.entity
 import jakarta.persistence.*
 
 @Entity
-data class Cart(
+class Cart(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) val id: Long? = null,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_id")
+    var id: Long? = null,
 
     @OneToOne
     @JoinColumn(name = "member_id")
-    val member: Member
+    var member: Member
 )

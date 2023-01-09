@@ -38,7 +38,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.0.0")
     implementation("com.vladmihalcea:hibernate-types-60:2.20.0")
     implementation("com.infobip:infobip-spring-data-jpa-querydsl-boot-starter:8.0.0")
     kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
