@@ -11,7 +11,7 @@ class Order (
     @Column(name = "order_id")
     val id: Long? = null,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     val member: Member,
 
@@ -20,11 +20,7 @@ class Order (
     @Enumerated(EnumType.STRING)
     val orderStatus: OrderStatus,
 
-    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
     val orderItems: List<OrderItem> = listOf(),
 
-    val regTime: LocalDateTime,
-
-    val updateTime: LocalDateTime
-
-)
+): BaseEntity()

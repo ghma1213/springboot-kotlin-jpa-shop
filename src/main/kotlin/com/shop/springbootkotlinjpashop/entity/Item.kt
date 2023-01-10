@@ -2,7 +2,6 @@ package com.shop.springbootkotlinjpashop.entity
 
 import com.shop.springbootkotlinjpashop.constant.ItemSellStatus
 import jakarta.persistence.*
-import java.time.LocalDateTime
 
 @Entity
 class Item(
@@ -27,8 +26,4 @@ class Item(
     @Enumerated(EnumType.STRING)
     val itemSellStatus: ItemSellStatus,
 
-    val regTime: LocalDateTime,
-
-    val updateTime: LocalDateTime
-
-)
+): BaseEntity()

@@ -24,7 +24,7 @@ class Member (
     @Enumerated(EnumType.STRING)
     val role: Role,
 
-) {
+): BaseEntity() {
 
 
     companion object {

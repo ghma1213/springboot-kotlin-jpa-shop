@@ -9,7 +9,7 @@ class Cart(
     @Column(name = "cart_id")
     var id: Long? = null,
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     var member: Member
-)
+): BaseEntity()

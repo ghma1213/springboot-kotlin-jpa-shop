@@ -1,12 +1,6 @@
 package com.shop.springbootkotlinjpashop.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
-import java.time.LocalDateTime
+import jakarta.persistence.*
 
 @Entity
 class OrderItem(
@@ -14,19 +8,15 @@ class OrderItem(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     val item: Item,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     val order: Order?,
 
     val orderPrice: Int,
 
     val count: Int,
-
-    val regTime: LocalDateTime,
-
-    val updateTime: LocalDateTime
-)
+): BaseEntity()

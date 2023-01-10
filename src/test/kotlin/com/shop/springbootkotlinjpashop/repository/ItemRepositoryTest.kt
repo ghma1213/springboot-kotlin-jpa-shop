@@ -16,7 +16,6 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.test.context.TestPropertySource
 import org.thymeleaf.util.StringUtils
-import java.time.LocalDateTime
 
 @SpringBootTest
 @TestPropertySource(locations = ["classpath:application-test.yml"])
@@ -34,8 +33,6 @@ class ItemRepositoryTest @Autowired constructor (val itemRepository: ItemReposit
             itemDetail = "테스트 상품 상세 설명",
             itemSellStatus = ItemSellStatus.SELL,
             stockNumber = 100,
-            regTime = LocalDateTime.now(),
-            updateTime = LocalDateTime.now()
         )
 
         val savedItem: Item = itemRepository.save(item)
@@ -52,8 +49,6 @@ class ItemRepositoryTest @Autowired constructor (val itemRepository: ItemReposit
                 itemDetail = "테스트 상품 상세 설명$i",
                 itemSellStatus = ItemSellStatus.SELL,
                 stockNumber = 100,
-                regTime = LocalDateTime.now(),
-                updateTime = LocalDateTime.now()
             )
             val savedItem: Item = itemRepository.save(item)
         }
@@ -126,8 +121,6 @@ class ItemRepositoryTest @Autowired constructor (val itemRepository: ItemReposit
                 itemDetail = "테스트 상품 상세 설명$i",
                 itemSellStatus = ItemSellStatus.SELL,
                 stockNumber = 100,
-                regTime = LocalDateTime.now(),
-                updateTime = LocalDateTime.now()
             )
             val savedItem: Item = itemRepository.save(item)
         }
@@ -139,8 +132,6 @@ class ItemRepositoryTest @Autowired constructor (val itemRepository: ItemReposit
                 itemDetail = "테스트 상품 상세 설명$i",
                 itemSellStatus = ItemSellStatus.SELL,
                 stockNumber = 0,
-                regTime = LocalDateTime.now(),
-                updateTime = LocalDateTime.now()
             )
             val savedItem: Item = itemRepository.save(item)
         }
